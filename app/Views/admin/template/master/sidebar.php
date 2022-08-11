@@ -38,42 +38,32 @@
                   </a>
               </li>
 
-          <li class="nav-item">
-            <a href="../widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Widgets
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
+              <li class="nav-item has-treeview" id="customerTree">
+                    <a href="#" class="nav-link" id="customerMenu">
+                        <i class="nav-icon fab fa-product-hunt"></i>
+                        <p>
+                            Customers
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
 
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Layout Options
-                <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">6</span>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../layout/top-nav.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Top Navigation</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../layout/top-nav-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Top Navigation + Sidebar</p>
-                </a>
-              </li>
-            </ul>
+                        <li class="nav-item">
+                            <a href="<?= base_url('Customers/add'); ?>" class="nav-link" id="customerSubMenuAdd">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add New</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin/customers'); ?>" class="nav-link" id="customerSubMenuManage">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Manage</p>
+                            </a>
+                        </li>
 
-       
-          </li> 
+
+                    </ul>
+                </li>
 
           <li class="nav-header">Settings</li>
             <li class="nav-item">

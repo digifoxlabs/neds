@@ -32,6 +32,12 @@
     <?=link_tag('public/assets/css/style.css')?>
 
 
+     <!-- DataTables -->
+     <?=link_tag('public/assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')?>
+
+     <?=link_tag('public/assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')?>
+
+
 <!-- jQuery -->
 <?= script_tag('public/assets/plugins/jquery/jquery.min.js') ?>
   <!-- jQuery UI 1.11.4 -->

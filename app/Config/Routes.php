@@ -40,6 +40,10 @@ $routes->set404Override(function(){
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+
+
+
+
 $routes->group('admin', ['namespace' => 'App\Controllers\Admin'] ,static function ($routes) {
 
 
@@ -50,8 +54,15 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'] ,static functio
     $routes->get('logout', 'User::logout');
     $routes->match(['get','post'],'profile', 'User::profile',['filter' => 'auth']);
     $routes->match(['get','post'],'settings', 'Settings::index',['filter' => 'auth']);
+
+    $routes->get('customers', 'Customers::manage', ['filter' => 'auth']);
+
+    $routes->post('ajaxLoadAllCustomers', 'Customers::ajaxLoadAllCustomers');
+
  
 });
+
+
 
 
 $routes->group("api",['namespace' => 'App\Controllers\Api'] , function ($routes) {

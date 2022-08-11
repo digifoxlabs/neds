@@ -38,7 +38,7 @@ class User extends AdminController
             if (!$this->validate($rules, $errors)) {
 
                 return view('admin/pages/login', [
-                    "validation" => $this->validator,'pagetitle' => 'MCS-Login',
+                    "validation" => $this->validator,'pageTitle' => 'MCS-Login',
                 ]);
             } else {
                 
