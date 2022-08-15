@@ -26,6 +26,10 @@ class Customers extends Migration
                 'type' => 'VARCHAR',
                 'constraint'=> '256',
             ],
+            'father_name' => [
+                'type' => 'VARCHAR',
+                'constraint'=> '256',
+            ],
 
             'gender' => [
                 'type' => 'VARCHAR',
@@ -47,6 +51,15 @@ class Customers extends Migration
                 
             ],
 
+            'doj_service' => [
+                'type' => 'DATE',
+                
+            ],
+
+            'is_disable' => [
+                'type' => 'VARCHAR',
+                'constraint'=> '128',
+            ],
             'disability' => [
                 'type' => 'VARCHAR',
                 'constraint'=> '256',
@@ -164,6 +177,12 @@ class Customers extends Migration
                 'type' => 'INT',
                 'constraint'=> '32',
                 'default' => 1,
+            ],
+
+            'image' => [
+                'type' => 'TEXT',
+                'null' =>true,
+  
             ],
     
           

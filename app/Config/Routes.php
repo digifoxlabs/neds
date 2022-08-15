@@ -48,6 +48,8 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'] ,static functio
 
 
     $routes->get("/", 'Dashboard::index', ['filter' => 'auth']);
+    $routes->get("dashboard/card", 'Dashboard::card', ['filter' => 'auth']);
+
     $routes->get('dashboard', 'Dashboard::index', ['filter' => 'auth']);
     $routes->match(['get', 'post'], 'login', 'User::login', ['filter' => 'noauth']);
     $routes->get('register', 'User::register');
@@ -56,6 +58,19 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'] ,static functio
     $routes->match(['get','post'],'settings', 'Settings::index',['filter' => 'auth']);
 
     $routes->get('customers', 'Customers::manage', ['filter' => 'auth']);
+    $routes->match(['get','post'],'customers/new', 'Customers::new', ['filter' => 'auth']);
+    $routes->match(['get','post'],'customers/view/(:num)', 'Customers::viewcustomer/$1', ['filter' => 'auth']);
+    $routes->match(['get','post'],'customers/print/(:num)', 'Customers::printcustomer/$1', ['filter' => 'auth']);
+
+    $routes->match(['get','post'],'customers/update/(:num)', 'Customers::updatecustomer/$1', ['filter' => 'auth']);
+    $routes->match(['get','post'],'customers/delete', 'Customers::deletecustomer', ['filter' => 'auth']);
+    $routes->match(['get','post'],'customers/customerimage', 'Customers::customerimage', ['filter' => 'auth']);
+    $routes->match(['get','post'],'customers/test', 'Customers::test');
+
+    $routes->match(['get','post'],'customers/members/(:any)', 'Customers::members/$1', ['filter' => 'auth']);
+    $routes->match(['get','post'],'customers/savemembers', 'Customers::savemembers', ['filter' => 'auth']);
+    $routes->match(['get','post'],'customers/deletemember', 'Customers::deletemember', ['filter' => 'auth']);
+    $routes->match(['get','post'],'customers/updatemember', 'Customers::updatemember', ['filter' => 'auth']);
 
     $routes->post('ajaxLoadAllCustomers', 'Customers::ajaxLoadAllCustomers');
 

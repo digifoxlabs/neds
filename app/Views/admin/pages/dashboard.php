@@ -27,7 +27,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3><?= "123"; ?></h3>
+                <h3><?= $totalCustomers; ?></h3>
                 <p>Customers</p>
               </div>
               <div class="icon">
@@ -41,13 +41,13 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3><?= "123"; ?></h3>
-                <p>Active Cards</p>
+                <h3><?= $activeCustomers; ?></h3>
+                <p>Active Customers</p>
               </div>
               <div class="icon">
                <i class="fas fa-battery-full"></i>
               </div>
-              <a href="<?= base_url('policy/active') ?>" class="small-box-footer">Manage <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?= base_url('admin/customers'); ?>" class="small-box-footer">Manage <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -55,13 +55,13 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3><?= "123"; ?></h3>
-                <p>Expired Cards</p>
+                <h3><?= $inactiveCustomers; ?></h3>
+                <p>Inactive Customers</p>
               </div>
               <div class="icon">
                <i class="fas fa-ban"></i>
               </div>
-              <a href="<?= base_url('policy/expired') ?>" class="small-box-footer">View All <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?= base_url('admin/customers'); ?>" class="small-box-footer">Manage <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -69,14 +69,14 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3><?= "123"; ?></h3>
+                <h3><?= "xxx"; ?></h3>
 
                 <p>Pending Payments</p>
               </div>
               <div class="icon">
                 <i class="fas fa-asterisk"></i>
               </div>
-              <a href="<?= base_url('Categories/index'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

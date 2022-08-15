@@ -17,6 +17,18 @@
       </div><!-- /.container-fluid -->
     </section>
 
+    <?php
+    $session = session(); ?>
+    
+    <script type="text/javascript">
+        <?php if($session->getFlashdata('success')): ?>
+        toastr.success('<?php echo $session->getFlashdata('success'); ?>')
+        <?php elseif($session->getFlashdata('error')): ?>
+        toastr.warning('<?php echo $session->getFlashdata('error'); ?>');
+        <?php endif; ?>
+      </script>  
+
+
     <!-- Main content -->
     <section class="content">
 
@@ -26,26 +38,23 @@
                     <div class="card card-outline card-info">
                         <div class="card-header">
                             <h3 class="card-title">Manage Orders</h3>
-                            <div class="card-tools">
+                            <!-- <div class="card-tools">
                                                                     
                         <div class="btn-group">
                             <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
                               <i class="fas fa-wrench"></i>
                             </button>
-                            <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                                          
+                            <div class="dropdown-menu dropdown-menu-right" role="menu">                                                          
                                <button type="button" class="dropdown-item btn btn-success m-b-5 m-r-2 btn-sm" data-toggle="modal" data-target="#modal-export" data-toggle="tooltip" data-placement="top" title="Export"> Export</button>                             
-                              <!--
+                              
                               <a href="#" class="dropdown-item">Closed Orders</a>
                               <a class="dropdown-divider"></a>
                               <a href="#" class="dropdown-item">Separated link</a>
--->
+
                             </div>
-                          </div>            
-                                        
-                                        
-                                        
-                            </div>
+                          </div>       
+                        </div> -->
+
                         </div>
                         <div class="card-body">
                             
@@ -147,15 +156,20 @@ $(document).ready(function() {
             },
             {
                 mRender: function(data, type, row) {
-                    return '<a href="<?= base_url('admin/customers/view/') ?>' + row.c_id +
-                        '" class="btn btn-info btn-xs" >VIEW</a>'
+                    return '<a href="<?= base_url('admin/customers/view') ?>' +'/' + row.c_id +
+                        '" class="btn btn-info btn-xs" >VIEW</a> <a href="<?= base_url('admin/customers/print') ?>' +'/' + row.c_id +
+                        '" class="btn btn-info btn-xs" target="_blank" >Print</a>'
                 }
             },
           ],
           columnDefs: [
 
             { orderable: false, targets: [0, 1, 2, 3] },
-            { className: 'text-center', targets: [3,4,5,6,7] },      
+            { className: 'text-center', targets: [3,4,5,6,7] },    
+            {"targets":[1,2,3,4],"render": function(data) {
+                    return data.toUpperCase();
+                },  
+              },
 
           ],
           bFilter: true, // to display datatable search

@@ -37,15 +37,29 @@
 
      <?=link_tag('public/assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')?>
 
+   <!--  Cropper JS-->
+   <link rel="stylesheet" href="https://unpkg.com/dropzone/dist/dropzone.css" />
+<link href="https://unpkg.com/cropperjs/dist/cropper.css" rel="stylesheet" />
+<script src="https://unpkg.com/dropzone"></script>
+<script src="https://unpkg.com/cropperjs"></script> 
 
-<!-- jQuery -->
-<?= script_tag('public/assets/plugins/jquery/jquery.min.js') ?>
-  <!-- jQuery UI 1.11.4 -->
-<?= script_tag('public/assets/plugins/jquery-ui/jquery-ui.min.js') ?>
-  <!-- SweetAlert2 -->
-  <?= script_tag('public/assets/plugins/sweetalert2/sweetalert2.min.js') ?>
-  <!-- Toastr -->
-  <?= script_tag('public/assets/plugins/toastr/toastr.min.js') ?>
+
+
+     <!-- Croppie CSS -->
+     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.css"> -->
+
+
+    <!-- jQuery -->
+    <?= script_tag('public/assets/plugins/jquery/jquery.min.js') ?>
+    <!-- jQuery UI 1.11.4 -->
+    <?= script_tag('public/assets/plugins/jquery-ui/jquery-ui.min.js') ?>
+    <!-- SweetAlert2 -->
+    <?= script_tag('public/assets/plugins/sweetalert2/sweetalert2.min.js') ?>
+    <!-- Toastr -->
+    <?= script_tag('public/assets/plugins/toastr/toastr.min.js') ?>
+
+  
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.js"></script> -->
 
   <style> 
        

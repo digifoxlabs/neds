@@ -28,7 +28,7 @@
 
 
   <!-- Crop Image Modal -->
-  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+  <div class="modal fade" id="cropImagePop" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

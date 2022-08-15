@@ -49,7 +49,7 @@
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item">
-                            <a href="<?= base_url('Customers/add'); ?>" class="nav-link" id="customerSubMenuAdd">
+                            <a href="<?= base_url('admin/customers/new'); ?>" class="nav-link" id="customerSubMenuAdd">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add New</p>
                             </a>
@@ -75,12 +75,12 @@
           </li>
 
 
-          <li class="nav-item">
-            <a href="<?= base_url('admin/userRoles') ?>" class="nav-link">           
+          <!-- <li class="nav-item">
+            <a href=""  class="nav-link">           
              <i class="nav-icon fa fa-users" aria-hidden="true"></i>
               <p>User Roles</p>
             </a>
-          </li> 
+          </li>  -->
 
         </ul>
       </nav>
