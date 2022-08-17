@@ -104,7 +104,7 @@
                             <div class="text-center">
                                 <div class="image_area">
                                     <label for="upload_image">
-                                        <?php echo empty($customerDetails['image'])? '<img width= "100"  src="'.base_url('public/Assets/img/default_img.jpg').'" alt="image" id="uploaded_image" class="img-circle" />' : '<img width= "100"  src="'.base_url('assets/img/customers').'/'.$customerDetails['image'].'" alt="image" id="uploaded_image" class="img-circle" /> ' ?>
+                                        <?php echo empty($customerDetails['image'])? '<img width= "100"  src="'.base_url('public/assets/img/default_img.jpg').'" alt="image" id="uploaded_image" class="img-circle" />' : '<img width= "100"  src="'.base_url('assets/img/customers').'/'.$customerDetails['image'].'" alt="image" id="uploaded_image" class="img-circle" /> ' ?>
                                         <div class="overlay">
                                             <div class="text">Click to Change Profile Image</div>
                                         </div>

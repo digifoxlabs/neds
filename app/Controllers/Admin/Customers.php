@@ -377,7 +377,7 @@ class Customers extends AdminController
             $image_array_2 = explode(",",$image_array_1[1]);
             $image = base64_decode($image_array_2[1]);
             $imageName = uniqid().'.png';    
-            $path = 'Assets/img/customers/'.$imageName;
+            $path = 'assets/img/customers/'.$imageName;
             file_put_contents($path,$image);
             $model = new CustomerModel();
             $newData = [
