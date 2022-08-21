@@ -4,52 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class CustomerModel extends Model
+class DistrictModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'customers';
-    protected $primaryKey       = 'c_id';
+    protected $table            = 'district';
+    protected $primaryKey       = 'd_id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [
-        "customer_id",
-        "name",
-        "father_name",
-        "gender",
-        "community",
-        "maritial_status",
-        "dob",
-        "doj_service",
-        "is_disable",
-        "disability",
-        "disability_pcn",
-        "res_hno",
-        "res_street",
-        "res_district",
-        "res_adminunit",
-        "res_unit_name",
-        "res_city",
-        "res_contact",
-        "res_email",
-        "ofc_hno",
-        "ofc_street",
-        "ofc_district",
-        "ofc_adminunit",
-        "ofc_unit_name",
-        "ofc_city",
-        "ofc_contact",
-        "ofc_email",
-        "ration_card",
-        "iden_1",
-        "iden_2",
-        "status",    
-        "image",    
-        "created_by_user",    
-        "valid_upto",    
-    ];
+    protected $allowedFields    = ["name","gender","dob","contact","email","address","image","status"];
 
     // Dates
     protected $useTimestamps = false;

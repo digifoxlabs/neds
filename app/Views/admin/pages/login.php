@@ -6,6 +6,18 @@
 
 <?= $this->section("content") ?>
 
+
+<?php
+    $session = session(); ?>
+    
+    <script type="text/javascript">
+        <?php if($session->getFlashdata('success')): ?>
+        toastr.success('<?php echo $session->getFlashdata('success'); ?>')
+        <?php elseif($session->getFlashdata('error')): ?>
+        toastr.warning('<?php echo $session->getFlashdata('error'); ?>');
+        <?php endif; ?>
+      </script>  
+
             <div class="login-box">
             <div class="login-logo">
                 <a href="#"><b>Admin</b>NEDS</a>

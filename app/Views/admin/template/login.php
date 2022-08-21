@@ -16,6 +16,20 @@
   <link rel="stylesheet" href="<?= base_url('assets') ?>/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <!-- Toastr -->
+  <link rel="stylesheet" href="<?= base_url('assets') ?>/plugins/toastr/toastr.min.css">
+
+
+  <!-- jQuery -->
+  <script src="<?= base_url('assets') ?>/plugins/jquery/jquery.min.js"></script>
+  <!-- SweetAlert2 -->
+  <script src="<?= base_url('assets') ?>/plugins/sweetalert2/sweetalert2.min.js"></script>
+
+  <!-- Toastr -->
+  <script src="<?= base_url('assets') ?>/public/assets/plugins/toastr/toastr.min.js"></script>
+
+
 </head>
 <body class="hold-transition login-page">
 
@@ -23,8 +37,7 @@
     <?= $this->renderSection("content") ?>
 
 
-<!-- jQuery -->
-<script src="<?= base_url('assets') ?>/plugins/jquery/jquery.min.js"></script>
+
 <!-- Bootstrap 4 -->
 <script src="<?= base_url('assets') ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->

@@ -58,9 +58,12 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'] ,static functio
     $routes->match(['get','post'],'settings', 'Settings::index',['filter' => 'auth']);
 
     $routes->get('customers', 'Customers::manage', ['filter' => 'auth']);
+    $routes->get('customers/(:num)', 'Customers::manage/$1', ['filter' => 'auth']);
+    // $routes->get('customers/operators', 'Customers::ofOperators', ['filter' => 'auth']);
     $routes->match(['get','post'],'customers/new', 'Customers::new', ['filter' => 'auth']);
     $routes->match(['get','post'],'customers/view/(:num)', 'Customers::viewcustomer/$1', ['filter' => 'auth']);
     $routes->match(['get','post'],'customers/print/(:num)', 'Customers::printcustomer/$1', ['filter' => 'auth']);
+    $routes->match(['get','post'],'customers/id_card/(:num)', 'Customers::id_card/$1', ['filter' => 'auth']);
 
     $routes->match(['get','post'],'customers/update/(:num)', 'Customers::updatecustomer/$1', ['filter' => 'auth']);
     $routes->match(['get','post'],'customers/delete', 'Customers::deletecustomer', ['filter' => 'auth']);
@@ -73,6 +76,18 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'] ,static functio
     $routes->match(['get','post'],'customers/updatemember', 'Customers::updatemember', ['filter' => 'auth']);
 
     $routes->post('ajaxLoadAllCustomers', 'Customers::ajaxLoadAllCustomers');
+
+    $routes->get("district", 'District::index', ['filter' => 'auth']);
+    $routes->post("district/create", 'District::addCoordinator', ['filter' => 'auth']);
+    $routes->post("district/delete", 'District::deleteCoordinator', ['filter' => 'auth']);
+    $routes->post("district/update", 'District::updateCoordinator', ['filter' => 'auth']);
+    $routes->post("district/password", 'District::resetPassword', ['filter' => 'auth']);
+
+    $routes->get("operator", 'Operator::index', ['filter' => 'auth']);
+    $routes->post("operator/create", 'Operator::addOperator', ['filter' => 'auth']);
+    $routes->post("operator/delete", 'Operator::deleteOperator', ['filter' => 'auth']);
+    $routes->post("operator/update", 'Operator::updateOperator', ['filter' => 'auth']);
+    $routes->post("operator/password", 'Operator::resetPassword', ['filter' => 'auth']);
 
  
 });

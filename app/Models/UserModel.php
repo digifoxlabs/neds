@@ -18,7 +18,14 @@ class UserModel extends Model
         "name",
         "email",
         "mobile",
-        "password"
+        "password",
+        "gender",
+        "dob",
+        "district",
+        "address",
+        "user_type",
+        "created_by",
+        "status"
     ];
 
 

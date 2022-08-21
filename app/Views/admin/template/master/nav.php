@@ -44,10 +44,18 @@
           <a href="<?= base_url("admin/profile"); ?>" class="dropdown-item">
             <i class="fas fa-envelope mr-2"></i>Profile
           </a>
-          <div class="dropdown-divider"></div>
-          <a href="<?= base_url("admin/settings"); ?>" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i>Settings
-          </a>
+
+          <?php if(session()->get('user_type') == 'admin') { ?>
+
+              <div class="dropdown-divider"></div>
+              <a href="<?= base_url("admin/settings"); ?>" class="dropdown-item">
+              <i class="fas fa-users mr-2"></i>Settings
+              </a>
+
+         <?php } ?>
+          
+
+  
 
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer" data-toggle="modal" data-target="#modal-logout">Logout</a>

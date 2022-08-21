@@ -27,22 +27,57 @@ class Users extends Migration
             ],
 
             'mobile' => [
-
                 'type' => 'VARCHAR',
                 'constraint'=> '256',
             ],
 
             'email' => [
-
+                'type' => 'VARCHAR',
+                'constraint'=> '256',
+            ],
+            'gender' => [
                 'type' => 'VARCHAR',
                 'constraint'=> '256',
                 'null' =>true,
             ],
-            'address' => [
+            'dob' => [
 
+                'type' => 'DATE',
+            ],
+
+            'address' => [
                 'type' => 'TEXT',
                 'null' =>true,
             ],
+            
+            'district' => [
+                'type' => 'VARCHAR',
+                'constraint'=> '256',
+                'null' => true,
+                'default' => NULL
+            ],  
+
+            'user_type' => [
+                'type' => 'VARCHAR',
+                'constraint'=> '256',    
+            ],
+
+            'created_by' => [
+                'type' => 'INT',
+                'constraint'=> 32,    
+            ],
+
+            'image' => [
+                'type' => 'TEXT',
+                'null' =>true,  
+            ],
+
+            'status' => [
+                'type' => 'INT',
+                'constraint'=> 32,    
+                'default' => 1,
+            ],
+
             'last_login datetime' ,
             'created_at datetime default current_timestamp',
             'updated_at datetime default current_timestamp on update current_timestamp',

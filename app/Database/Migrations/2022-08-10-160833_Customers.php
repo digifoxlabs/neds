@@ -184,6 +184,15 @@ class Customers extends Migration
                 'null' =>true,
   
             ],
+
+            'created_by_user' => [
+                'type' => 'INT',
+                'constraint'=> '32',  
+            ],
+
+            'valid_upto' => [
+                'type' => 'DATE',
+            ],
     
           
             'created_at datetime default current_timestamp',
