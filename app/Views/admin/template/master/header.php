@@ -34,8 +34,9 @@
 
      <!-- DataTables -->
      <?=link_tag('public/assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')?>
-
      <?=link_tag('public/assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')?>
+     <!-- DataTable Button-->
+<link href="https://cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css" rel="stylesheet">
 
    <!--  Cropper JS-->
    <link rel="stylesheet" href="https://unpkg.com/dropzone/dist/dropzone.css" />

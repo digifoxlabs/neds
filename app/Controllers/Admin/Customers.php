@@ -27,6 +27,40 @@ class Customers extends AdminController
 
     }
 
+
+    /**View ID CARD */
+    public function id_card($id){
+
+        $data = array( 
+            'pageTitle' => 'MCS-Members',            
+            'cust_id' => $id,            
+        );
+
+                //Fetch User Data
+                $customerModel = new CustomerModel();
+                $customerDetails = $customerModel->where('c_id', $id)->first();   
+                if($customerDetails){
+        
+                    //fetch Members
+                    $familyModel = new FamilyModel();
+                    $data['customerDetails'] = $customerDetails;
+                    $data['familyDetails'] = $familyModel->where('c_id', $id)->findAll();
+        
+                 
+                   $this->render_view('admin/pages/customers/id-card',$data);
+                  // return view('admin/pages/customers/id-card', $data);
+        
+                 }
+        
+                 else {
+                    return redirect()->to(base_url('admin/customers'));
+        
+                 } 
+
+
+    }
+
+
     /**Print Customer Data */
 
     public function printcustomer($id){
@@ -155,6 +189,8 @@ class Customers extends AdminController
                     'iden_2' => $this->request->getVar('iden_2'),
 
                     'image' => NULL,
+                    'created_by_user' => session()->get('id'),
+                    'valid_upto' => Date('y:m:d', strtotime('365 days')),
                 ];
                 $model->save($newData);
                // $last_id = $model->insertID();
@@ -163,7 +199,15 @@ class Customers extends AdminController
 
               $session = session();
               $session->setFlashdata('success', 'Created Successfuly');
-              return redirect()->to(base_url('admin/customers'));
+
+             if( (session()->get('user_type') == 'operator')) { 
+
+                return redirect()->to(base_url('admin/customers/'.session()->get('id')));
+
+             }
+             return redirect()->to(base_url('admin/customers'));
+
+              
 
 
             }
@@ -603,24 +647,52 @@ class Customers extends AdminController
     }
 
 
-    /*Manager all customers */
+    /*Manager all customers by ADMIN*/
 
-    public function manage()
+    public function manage($id='')
     {
-        $data = array( 
-            'pageTitle' => 'MCS-Customers',             
-        );
+        //fetch Customers of Operators
+        if($id){
+            $data = array( 
+                'pageTitle' => 'MCS-Customers',   
+                'custMsg' => 'Showing Customers of Operator',          
+                'operatorID' => $id,          
+            );
+            $this->render_view('admin/pages/customers/manage',$data);            
+        }
 
-        $this->render_view('admin/pages/customers/manage',$data);
+        //All Customers for ADMin VIEW
+        else {
 
+            $data = array( 
+                'pageTitle' => 'MCS-Customers',             
+                'custMsg' => 'Showing All Customers', 
+                'operatorID' => NULL,             
+            );
+            $this->render_view('admin/pages/customers/manage',$data);
+        }
 
     }
+
+
+    /**Manage Customers of Operators */
+
+    // public function ofOperators()
+    // {
+    //     $data = array( 
+    //         'pageTitle' => 'MCS-Customers',             
+    //     );
+    //     $this->render_view('admin/pages/customers/cust_operators',$data);
+    // }
+
 
     public function ajaxLoadAllCustomers()
     {
         // echo "HELLO";
 
         // exit;
+
+       // $created_by = session()->get('id');
 
         $params['draw'] = $_REQUEST['draw'];
         $start = $_REQUEST['start'];
@@ -629,6 +701,7 @@ class Customers extends AdminController
         //$value1 = isset($_REQUEST['key1'])?$_REQUEST['key1']:"";
 
         $valueStatus = isset($_REQUEST['status'])?$_REQUEST['status']:"";
+        $created_by = isset($_REQUEST['created_by'])?$_REQUEST['created_by']:"";
 
         /* Value we will get from typing in search */
         $search_value = $_REQUEST['search']['value'];
@@ -636,27 +709,52 @@ class Customers extends AdminController
         if(!empty($search_value)){
             // If we have value in search, searching by id, name, email, mobile
 
-            // count all data
-            $total_count = $this->db->query("SELECT * from customers WHERE customer_id like '%".$search_value."%' OR name like '%".$search_value."%'")->getResult();
+            // count all data for admin
+            if(session()->get('user_type') == 'admin') { 
 
-            $data = $this->db->query("SELECT * from customers WHERE customer_id like '%".$search_value."%' OR name like '%".$search_value."%' limit $start, $length")->getResult();
+                $total_count = $this->db->query("SELECT * from customers WHERE customer_id like '%".$search_value."%' OR name like '%".$search_value."%'")->getResult();
+                $data = $this->db->query("SELECT * from customers WHERE customer_id like '%".$search_value."%' OR name like '%".$search_value."%' limit $start, $length")->getResult();
+
+            }
+            else {
+
+                $total_count = $this->db->query("SELECT * from customers WHERE ((customer_id like '%".$search_value."%' OR name like '%".$search_value."%')AND (created_by_user = $created_by)")->getResult();
+                $data = $this->db->query("SELECT * from customers WHERE ((customer_id like '%".$search_value."%' OR name like '%".$search_value."%') AND (created_by_user = $created_by)) limit $start, $length")->getResult();
+
+            }
+           
         }
         
         else if(!empty($valueStatus)){
             // If we have value in search, searching by id, name, email, mobile
 
-            // count all data
-            $total_count = $this->db->query("SELECT * from customers WHERE status=".$valueStatus."")->getResult();
+            // count all data for admin
+            if(session()->get('user_type') == 'admin') { 
+                 $total_count = $this->db->query("SELECT * from customers WHERE status=".$valueStatus."")->getResult();
+                 $data = $this->db->query("SELECT * from customers WHERE status=".$valueStatus."")->getResult();
+            }
+            else {
 
-            $data = $this->db->query("SELECT * from customers WHERE status=".$valueStatus."")->getResult();
+                $total_count = $this->db->query("SELECT * from customers WHERE (status=".$valueStatus." AND created_by_user = $created_by)")->getResult();
+                $data = $this->db->query("SELECT * from customers WHERE (status=".$valueStatus." AND created_by_user = $created_by)")->getResult();
+
+            }
         }        
         
         else{
-            // count all data
-            $total_count = $this->db->query("SELECT * from customers")->getResult();
+            // count all data for admin
+            if(session()->get('user_type') == 'admin') { 
+                $total_count = $this->db->query("SELECT * from customers")->getResult();
+                // get per page data
+                 $data = $this->db->query("SELECT * from customers limit $start, $length")->getResult();
+            }
+            else {
 
-            // get per page data
-            $data = $this->db->query("SELECT * from customers limit $start, $length")->getResult();
+                $total_count = $this->db->query("SELECT * from customers WHERE created_by_user = $created_by")->getResult();
+                // get per page data
+                 $data = $this->db->query("SELECT * from customers WHERE created_by_user = $created_by limit $start, $length")->getResult();
+
+            }
         }
         
         $json_data = array(

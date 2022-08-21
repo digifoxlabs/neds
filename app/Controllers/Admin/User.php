@@ -43,12 +43,29 @@ class User extends AdminController
             } else {
                 
                 $model = new UserModel();
+               // $array = array('email' => $this->request->getVar('email'), 'status'=> 1);
                 $user = $model->where('email', $this->request->getVar('email'))
-                    ->first();
+                             ->where('status', '1')
+                             ->first();
                 // Stroing session values
-                $this->setUserSession($user);
-                // Redirecting to dashboard after login
-                return redirect()->to(base_url('admin/dashboard'));
+
+                if($user){
+
+                    $this->setUserSession($user);
+                    // Redirecting to dashboard after login
+                    return redirect()->to(base_url('admin/dashboard'));
+
+                }
+
+                else {
+
+                    $session = session();
+                    $session->setFlashdata('error', 'Invalid User ID');
+                    return view('admin/pages/login', ['pageTitle' => 'MCS-Login',
+                    ]);
+
+                }
+              
             }
         }
 
@@ -64,6 +81,7 @@ class User extends AdminController
             'name' => $user['name'],
             'mobile' => $user['mobile'],
             'email' => $user['email'],
+            'user_type' => $user['user_type'],
             'isLoggedIn' => true,
         ];
 

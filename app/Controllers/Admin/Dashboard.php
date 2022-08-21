@@ -24,24 +24,72 @@ class Dashboard extends AdminController
         // }
 
         // Loading Query builder instance
-        $builder = $this->db->table('customers');
+        $customers = $this->db->table('customers');
+        $users = $this->db->table('users');
 
-        $noCustomers = $builder->countAllResults();
-        $activeCustomers = $builder->where(["status" => 1])->countAllResults();
-        $inactiveCustomers = $builder->where(["status" => 2])->countAllResults();
+        //For admin
+        if(session()->get('user_type') == 'admin') { 
+
+            $totalCustomers = $customers->countAllResults();
+            $coordinators = $users->where(["user_type" => 'coordinator'])->countAllResults();
+            $operators = $users->where(["user_type" => 'operator'])->countAllResults();
+           // $activeCustomers = $builder->where(["status" => 1])->countAllResults();
+           // $inactiveCustomers = $builder->where(["status" => 2])->countAllResults();
+
+           $data = array( 
+            'pageTitle' => 'MCS-Dashboard',             
+            'totalCustomers' => $totalCustomers,             
+            'coordinators' =>  $coordinators,             
+            'operators' =>  $operators,             
+             );      
+            
+             $this->render_view('admin/pages/dashboard',$data);
+        
+
+
+        }
+
+        //For District Coordinator
+
+        if(session()->get('user_type') == 'coordinator') { 
+
+            $operators = $users->where(["user_type" => 'operator'])
+                                ->where("created_by",session()->get('id') )
+                                ->countAllResults();            
+           $data = array( 
+            'pageTitle' => 'MCS-Dashboard',                                
+            'operators' =>  $operators,             
+             );      
+            
+            $this->render_view('admin/pages/dashboard',$data); 
+
+
+
+        }
+
+
+        //For Operator
+
+        if(session()->get('user_type') == 'operator') { 
+
+
+           
+            $totalCustomers = $customers->where("created_by_user",session()->get('id') )->countAllResults(); 
+
+            $data = array( 
+            'pageTitle' => 'MCS-Dashboard',                                
+            'totalCustomers' => $totalCustomers,           
+            );      
+
+            $this->render_view('admin/pages/dashboard',$data);
+
+
+
+
+        }
  
 
-        $data = array( 
-            'pageTitle' => 'MCS-Dashboard',             
-            'totalCustomers' => $noCustomers,             
-            'activeCustomers' =>  $activeCustomers,             
-            'inactiveCustomers' =>  $inactiveCustomers,             
-        );
-
-       // return view('admin/pages/dashboard', $data);
-
-       $this->render_view('admin/pages/dashboard',$data);
-        
+   
 
 
     }

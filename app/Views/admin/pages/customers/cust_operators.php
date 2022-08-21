@@ -37,7 +37,7 @@
                 <div class="col-md-12 col-12">
                     <div class="card card-outline card-info">
                         <div class="card-header">
-                            <h3 class="card-title"><?= $custMsg; ?></h3>
+                            <h3 class="card-title">Showing Customers of xxxx</h3>
                             <!-- <div class="card-tools">
                                                                     
                         <div class="btn-group">
@@ -127,11 +127,9 @@ $(document).ready(function() {
               // key1: value1 - in case if we want send data with request       
 
               var type = $('#searchByStatus').val();
-              var owner = <?= $operatorID; ?>
        
               // Append to data
               data.status = type;          
-              data.created_by = owner;          
 
             
             }
