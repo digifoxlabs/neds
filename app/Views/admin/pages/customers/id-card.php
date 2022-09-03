@@ -28,6 +28,10 @@ hr.new2 {
     height: 45vh;
     margin: auto;
     background-color: white;
+    background-image: url('<?= base_url('assets/img/card_bck.jpg') ?>');
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
     box-shadow: 0 1px 10px rgb(146 161 176 / 50%);
     overflow: hidden;
     border-radius: 10px;
@@ -38,11 +42,13 @@ hr.new2 {
     width: 73vh;
     height: 15vh;
     margin: 20px auto;
-    background-color: white;
+    /* background-color: white; */
     /* box-shadow: 0 1px 10px rgb(146 161 176 / 50%); */
     /* border-radius: 10px; */
-    background-image: url('<?= base_url('assets/img/card_header.png') ?>');
+   
+    /* background-image: url('<?= base_url('assets/img/card_header.png') ?>'); */
     background-repeat: no-repeat;
+    background-size: cover;
     overflow: hidden;
     font-family: 'Poppins', sans-serif;
 }
@@ -269,7 +275,7 @@ hr.new2 {
                     <p style='font-size: 14px;'>ID: <?= $customerDetails['customer_id']; ?></p>
                 </div>
                 <div class='box-3'>
-                    <img src='<?= base_url('assets/img/logo.jpg') ?>' alt=''>
+                    <!-- <img src='<?= base_url('assets/img/logo.jpg') ?>' alt=''> -->
                 </div>
             </div>
 
