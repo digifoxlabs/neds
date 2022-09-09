@@ -101,6 +101,7 @@ $routes->group("api",['namespace' => 'App\Controllers\Api'] , function ($routes)
     $routes->post("login", "User::login");
     $routes->get("profile", "User::profile");
     $routes->get("users", "User::allUsers");
+    $routes->post("client/register", "Entry::create");
 });
 
 

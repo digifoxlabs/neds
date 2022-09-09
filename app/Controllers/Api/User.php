@@ -43,7 +43,10 @@ class User extends ResourceController
         } else {
             $userModel = new UserModel();
 
-            $userdata = $userModel->where("email", $this->request->getVar("email"))->first();
+            // $userdata = $userModel->where("email", $this->request->getVar("email"))->first();
+            $userdata =$userModel->where('email', $this->request->getVar('email'))
+                                ->where('status', '1')
+                                 ->first();
 
             if (!empty($userdata)) {
 
@@ -72,6 +75,7 @@ class User extends ResourceController
                         'messages' => 'User logged In successfully',
                         'data' => [[
                             'token' => $token,
+                            'user_id'=> $userdata['u_id'],
                             'name'=> $userdata['name'],
                             'email'=> $userdata['email'],
                         ]]
