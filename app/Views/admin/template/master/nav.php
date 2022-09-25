@@ -52,10 +52,8 @@
               <i class="fas fa-users mr-2"></i>Settings
               </a>
 
-         <?php } ?>
-          
-
-  
+         <?php } ?>        
+ 
 
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer" data-toggle="modal" data-target="#modal-logout">Logout</a>
@@ -64,8 +62,6 @@
       </li>
   
     </ul>
-
-
 
     </ul>
   </nav>

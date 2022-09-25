@@ -22,8 +22,8 @@
     <!-- Daterange picker -->
     <?=link_tag('public/assets/plugins/daterangepicker/daterangepicker.css')?>
 
-  <!-- Toastr -->
-  <?=link_tag('public/assets/plugins/toastr/toastr.min.css')?>
+    <!-- Toastr -->
+    <?=link_tag('public/assets/plugins/toastr/toastr.min.css')?>
 
     <!-- summernote -->
     <?=link_tag('public/assets/plugins/summernote/summernote-bs4.css')?>
@@ -36,14 +36,13 @@
      <?=link_tag('public/assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')?>
      <?=link_tag('public/assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')?>
      <!-- DataTable Button-->
-<link href="https://cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css" rel="stylesheet">
 
-   <!--  Cropper JS-->
-   <link rel="stylesheet" href="https://unpkg.com/dropzone/dist/dropzone.css" />
-<link href="https://unpkg.com/cropperjs/dist/cropper.css" rel="stylesheet" />
-<script src="https://unpkg.com/dropzone"></script>
-<script src="https://unpkg.com/cropperjs"></script> 
-
+    <!--  Cropper JS-->
+    <link rel="stylesheet" href="https://unpkg.com/dropzone/dist/dropzone.css" />
+    <link href="https://unpkg.com/cropperjs/dist/cropper.css" rel="stylesheet" />
+    <script src="https://unpkg.com/dropzone"></script>
+    <script src="https://unpkg.com/cropperjs"></script> 
 
 
      <!-- Croppie CSS -->
