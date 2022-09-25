@@ -102,7 +102,7 @@ $routes->group("api",['namespace' => 'App\Controllers\Api'] , function ($routes)
     $routes->get("profile", "User::profile");
     $routes->get("users", "User::allUsers");
     $routes->post("client/register", "Entry::create");
-    $routes->post("client/fetch", "Entry::fetchAll");
+    $routes->get("client/fetch", "Entry::fetchAll");
     $routes->post("client/image", "Entry::photo");
 });
 
