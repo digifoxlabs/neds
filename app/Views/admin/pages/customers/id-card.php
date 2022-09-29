@@ -36,6 +36,18 @@ hr.new2 {
     overflow: hidden;
     border-radius: 10px;
 }
+ .container-back {
+    width: 80vh;
+    height: 45vh;
+    margin: auto;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    box-shadow: 0 1px 10px rgb(146 161 176 / 50%);
+    overflow: hidden;
+    border-radius: 10px;
+}
 
 .header {
     /* border: 2px solid black; */
@@ -114,13 +126,13 @@ hr.new2 {
 
 .box-3 {
     /* border: 2px solid rgb(21, 255, 0); */
-    width: 8vh;
-    height: 8vh;
+    width: 12vh;
+    height: 12vh;
     margin: 8px 0px 8px 30px;
 }
 
 .box-3 img {
-    width: 8vh;
+    width: 12vh;
 }
 
 .container-3 {
@@ -236,6 +248,52 @@ hr.new2 {
     margin: 41px 0px 0px 20px;
     text-align: center;
 }
+
+.container-4 {
+    /* border: 2px solid rgb(111, 2, 161); */
+    width: 73vh;
+    height: 12vh;
+    margin: 0px auto;
+    margin-top: 10px;
+    display: flex;
+    font-family: 'Shippori Antique B1', sans-serif;
+    font-size: 0.7rem;
+}
+
+.add-info {
+    /* border: 1px solid rgb(255, 38, 0); */
+    width: 90vh;
+    height: 12vh;
+}
+
+.address {
+    /* border: 1px solid rgb(2, 92, 17); */
+    width: 90vh;
+    height: 5vh;
+}
+
+.address h4 {
+
+    margin-top:15px;
+    color: rgb(179, 116, 0);
+    font-size:18px;
+}
+
+.add-value{
+     font-size: 15px;
+     margin-top: -8px;
+ }
+
+
+
+
+
+
+
+
+
+
+
     </style>
 
 
@@ -260,75 +318,134 @@ hr.new2 {
 
     
 
-      <!-- Default box -->
+      <!-- Front Side box -->
       <div class="card card-primary card-outline">    
+
         <div class="card-body login-page" id="mycard">
+
         <div class='card' style='width:350px; padding:0;' >
-        <div class='container' style='text-align:left; border:2px dotted black;'>                                              
-        <div class='header'></div>                                  
-            <div class='container-2'>
-                <div class='box-1'>              
-                <?php echo empty($customerDetails['image'])? '<img width= "100"  src="'.base_url('public/Assets/img/default_img.jpg').'" alt="image"  />' : '<img width= "100"  src="'.base_url('assets/img/customers').'/'.$customerDetails['image'].'" alt="image" id="uploaded_image"  /> ' ?>
-                </div>
-                <div class='box-2'>
-                    <h2><strong><?= $customerDetails['name']; ?></strong></h2>
-                    <p style='font-size: 14px;'>ID: <?= $customerDetails['customer_id']; ?></p>
-                </div>
-                <div class='box-3'>
-                    <!-- <img src='<?= base_url('assets/img/logo.jpg') ?>' alt=''> -->
-                </div>
-            </div>
-
-            <div class='container-3'>
-                <div class='info-1'>
-                    <div class='id'>
-                        <h4>Father's Name</h4>
-                        <p class="txt-value"><?= $customerDetails['father_name']; ?></p>
-                    </div>
-                    <div class='dob'>
-                        <h4>Phone</h4>
-                        <p class="txt-value"><?= $customerDetails['res_contact']; ?></p>
+            <div class='container' style='text-align:left; border:2px dotted black;'>                                              
+                <div class='header'></div>                                  
+                    <div class='container-2'>
+                        <div class='box-1'>              
+                        <?php echo empty($customerDetails['image'])? '<img width= "100"  src="'.base_url('public/Assets/img/default_img.jpg').'" alt="image"  />' : '<img width= "100"  src="'.base_url('assets/img/customers').'/'.$customerDetails['image'].'" alt="image" id="uploaded_image"  /> ' ?>
+                        </div>
+                        <div class='box-2'>
+                            <h2><strong><?= $customerDetails['name']; ?></strong></h2>
+                            <p style='font-size: 14px;'>ID: <?= $customerDetails['customer_id']; ?></p>
+                        </div>
+                        <div class='box-3'>
+                            <img src='<?= base_url('').'/'.$qr_code; ?>' alt=''>
+                        </div>
                     </div>
 
-                </div>
-                <div class='info-2'>
-                    <div class='join-date'>
-                        <h4>DOB</h4>
-                        <p class="txt-value"><?= $customerDetails['dob']; ?></p>
-                    </div>
-                    <div class='expire-date'>
-                        <h4>Expiry Date</h4>
-                        <p class="txt-value"><?= $customerDetails['valid_upto']; ?></p>
-                    </div>
-                </div>
-                <div class='info-3'>
-                    <div class='email'>
-                        <h4>Gender</h4>
-                        <p class="txt-value"><?= strtoupper($customerDetails['gender']); ?></p>
-                    </div>                    
+                        <div class='container-3'>
+                            <div class='info-1'>
+                                <div class='id'>
+                                    <h4>Father's Name</h4>
+                                    <p class="txt-value"><?= $customerDetails['father_name']; ?></p>
+                                </div>
+
+                                <div class='expire-date'>
+                                    <h4>DOB</h4>
+                                    <p class="txt-value"><?= $customerDetails['dob']; ?></p>
+                                </div>                 
+
+                            </div>
+                            <div class='info-2'>
+                            <div class='join-date'></div>
+                                <div class='expire-date'>
+                                    <h4>Expiry Date</h4>
+                                    <p class="txt-value"><?= $customerDetails['valid_upto']; ?></p>
+                                </div>
+                            </div>
+                            <div class='info-3'>                               
+                                <div class='dob'></div>      
+                                <div class='email'>
+                                    <h4>Gender</h4>
+                                    <p class="txt-value"><?= strtoupper($customerDetails['gender']); ?></p>
+                                </div>          
+                                    
+                            </div>
+                            <div class='info-4'>
+                                <div class='sign'>
+                                    <br>
+                                    <p class="txt-value" style='font-size:12px;'>Your Signature</p>
+                                </div>
+                            </div>
+                    
+                    </div>        
+                </div>  <!-- /.Container -->       
+        </div> <!-- /.card -->
+
+
+
+    <!-- Back Side -->
+        <div class='card' style='width:350px; padding:0;' >
+            <div class='container-back' style='text-align:left; border:2px dotted black;'>                                              
+                                           
                            
-                </div>
-                <div class='info-4'>
-                    <div class='sign'>
-                        <br>
-                        <p class="txt-value" style='font-size:12px;'>Your Signature</p>
-                    </div>
-                </div>
+                <?php $address = ''; 
                 
-            </div>
-        
-        </div>
+                if(!empty($customerDetails['res_hno']))
+                $address = 'Hno: '.$customerDetails['res_hno'];
+                
+                if(!empty($customerDetails['res_street']))
+                $address .= ' ,Street: '.$customerDetails['res_street'];
+ 
+                if(!empty($customerDetails['res_district']))
+                $address .= ' ,District: '.$customerDetails['res_district'];
+                if(!empty($customerDetails['res_city']))
+                $address .= ' ,City: '.$customerDetails['res_district'];
+             ?>
 
 
-         
-        </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-      
-        </div>
-        <!-- /.card-footer-->
-      </div>
-      <!-- /.card -->
+                        <div class='container-4'>
+                            <div class='add-info'>
+                                <div class='address'>
+                                    <h4 style="margin-bottom: 2vh;">Residential Address:</h4>
+                                    <p class="add-value"><?= $address; ?></p>
+                                </div>
+                                <div class='dob'>
+                                    <h4 style="margin-top: 2vh;">Phone: </h4>
+                                    <p class="txt-value"><?= $customerDetails['res_contact']; ?></p>
+                                </div>
+                                <div class='dob'>
+                                    <h4 style="margin-top: 2vh;">Email: </h4>
+                                    <p class="txt-value"><?= $customerDetails['res_email']; ?></p>
+                                </div>
+                         </div>
+               
+                    
+                    </div>        
+                </div>  <!-- /.Container -->       
+        </div> <!-- /.card -->
+
+
+
+
+
+
+
+
+
+
+
+    </div> <!-- /.card-body -->
+
+    </div>
+    <!-- /.card -->
+
+
+
+
+
+
+
+
+
+
+
       
 
     </section>

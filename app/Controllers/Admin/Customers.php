@@ -5,6 +5,8 @@ namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 use App\Controllers\AdminController;
 
+use App\Libraries\Ciqrcode;
+
 use CodeIgniter\Files\File;
 
 // Load Model
@@ -36,6 +38,7 @@ class Customers extends AdminController
             'cust_id' => $id,            
         );
 
+
                 //Fetch User Data
                 $customerModel = new CustomerModel();
                 $customerDetails = $customerModel->where('c_id', $id)->first();   
@@ -45,9 +48,30 @@ class Customers extends AdminController
                     $familyModel = new FamilyModel();
                     $data['customerDetails'] = $customerDetails;
                     $data['familyDetails'] = $familyModel->where('c_id', $id)->findAll();
+
+                    //generate QR code
+                    $qrdata = '';
+                    if(!empty($customerDetails['name']))
+                    $qrdata = 'Name: '.$customerDetails['name'];
+                    
+                    if(!empty($customerDetails['dob']))
+                    $qrdata .= ' ,DOB: '.$customerDetails['dob'];
+     
+                    if(!empty($customerDetails['father_name']))
+                    $qrdata .= ' ,Father Name: '.$customerDetails['father_name'];
+
+                    if(!empty($customerDetails['gender']))
+                    $qrdata .= ' ,Gender: '.$customerDetails['gender'];
+
+                    if(!empty($customerDetails['valid_upto']))
+                    $qrdata .= ' ,ValidUpto: '.$customerDetails['valid_upto'];
+
+          
         
-                 
+                    $data['qr_code'] = $this->generate_code($qrdata);
                    $this->render_view('admin/pages/customers/id-card',$data);
+
+
                   // return view('admin/pages/customers/id-card', $data);
         
                  }
@@ -784,6 +808,56 @@ class Customers extends AdminController
                 
     }
 
+    /**Generate QR Code */
+
+    public function generate_code($data){
+
+       // $data = "Name:AMLAN BHUYAN;DOB:17/12/1990";
+
+                /* Load QR Code Library */
+               // $this->load->library('ciqrcode');
+
+                $qr = new ciqrcode();
+
+                /* Data */
+                $hex_data   = bin2hex($data);
+                $save_name  = $hex_data . '.png';
+        
+                /* QR Code File Directory Initialize */
+                $dir = 'assets/media/qrcode/';
+                if (! file_exists($dir)) {
+                    mkdir($dir, 0775, true);
+                }
+        
+                /* QR Configuration  */
+                $config['cacheable']    = true;
+                $config['imagedir']     = $dir;
+                $config['quality']      = true;
+                $config['size']         = '1024';
+                $config['black']        = [255, 255, 255];
+                $config['white']        = [255, 255, 255];
+               // $this->ciqrcode->initialize($config);
+               $qr->initialize($config);
+        
+                /* QR Data  */
+                $params['data']     = $data;
+                $params['level']    = 'L';
+                $params['size']     = 10;
+                $params['savename'] = FCPATH . $config['imagedir'] . $save_name;
+        
+                //$this->ciqrcode->generate($params);
+                $qr->generate($params);
+
+
+                return $dir . $save_name;
+        
+                /* Return Data */
+                // return [
+                //     'content' => $data,
+                //     'file'    => $dir . $save_name,
+                // ];
+
+    }
 
 
 

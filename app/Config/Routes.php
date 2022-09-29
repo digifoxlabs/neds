@@ -89,6 +89,9 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'] ,static functio
     $routes->post("operator/update", 'Operator::updateOperator', ['filter' => 'auth']);
     $routes->post("operator/password", 'Operator::resetPassword', ['filter' => 'auth']);
 
+
+    $routes->match(['get','post'],'customers/qrcode', 'Customers::generate_code', ['filter' => 'noauth']);
+
  
 });
 
